@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+  body{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #3258fa;
+    min-height: 100vh; /*Ensure the body takes full viewport height*/
+    margin: 0;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*Center children horizontal*/
+    text-align: center; /*Center text elements*/
+  }
+  .container img{
+    width: 40%;
+  }
+  h1{
+    font-size: 2.2rem;
+    margin-bottom: 14vh;
+  }
+  h1 span{
+    font-size: 4rem;
+    color: #ff7216;
+  }
+  a{
+    color: #ff7216;
+    text-decoration: none;
+    font-size: 1.5rem;
+    text-align: right;
+    left: 50px;
+    margin-top: 50px;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Ngalula<span>Chat</span></h1>
+  <img src="{{url_for('static', filename='chat.svg')}}">
+  </div>
+  
+  <a href="{{url_for('login')}}">Welcome</a>
+</body>
+</html>

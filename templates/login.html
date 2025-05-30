@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN PAGE</title>
+  <style>
+  body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, #0000ff, #00f0f0);
+    align-items: center;
+    justify-content: center;
+  }
+  h1{
+    text align: center;
+    font-size: 26px;
+    color: #000000;
+  }
+  form{
+    display: flex;
+    width: 80%;
+    height: 60vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #3a7196;
+    background: #ffffff;
+    box-shadow: 0 5px 15px #ff2856;
+    border-radius: 15px;
+  }
+  #user{
+    height: 40px;
+    width: 70%;
+    border: 1px solid #3a7195;
+    background: transparent;
+    color: #000000;
+    text-align: center;
+    font-size: 20px;
+    margin: 30px;
+  }
+  #user::placeholder{
+    font-size: 20px;
+    color: #000000;
+  }
+  #loginBtn{
+    height: 40px;
+    width: 70%;
+    border-radius: 15px;
+    border: none;
+    background: #3ad;
+    color: #333;
+    text-align: center;
+    font-size: 25px;
+    margin: 30px;
+  }
+  label{
+    font-size: 15px;
+    color: #3a7196;
+  }
+  label a{
+    text-decoration: none;
+    color: #000000;
+  }
+  .password{
+    height: 40px;
+    width: 70%;
+    background: transparent;
+    border: 1px solid #3a7195;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #pass{
+    width: 90%;
+    height: 40px;
+    margin-left: 5px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    color: #000000;
+    text-align: center;
+  }
+  #pass::placeholder{
+    color: #000000;
+    font-size: 20px;
+  }
+  #togo, #atogo{
+    width: 50px;
+    height: 40px;
+    float: right;
+    border-radius: 50%;
+    margin-right: 2px;
+  }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div style="color: red; font-size: 20px; text-align: center;">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+  
+  <h1>LOGIN TO CONTINUE!</h1>
+  <form class="auth"method="POST" action="/login">
+    <input type="text" name="username" id="user"placeholder="Username"required>
+    
+    <div class="password">
+    <input type="password" id="pass"name="password" placeholder="Password"required>
+      <img src="{{url_for('static', filename='toggle.jpg')}}" id="togo">
+      <img src="{{url_for('static', filename='imageya.png')}}" id="atogo"hidden>
+    </div>
+    <input type="submit" id="loginBtn"name="loginBtn"value="Login">
+    
+    <div class="register">
+    <label>Don't have an account <a href="/register">Sign in</a></label>
+    </div>
+  </form>
+  <script>
+  const password= document.getElementById("pass");
+  const username= document.getElementById("name");
+  const togoBtn=document.getElementById("togo");
+  const loginBtn=document.getElementById("loginBtn");
+  const image = document.querySelector("#togo");
+  
+  togoBtn.addEventListener('click', ()=>{
+    if (password.type === "password"){
+      password.type= "text";
+      image.src = "{{url_for('static', filename='imageya.png')}}";
+    }else{
+      password.type="password"
+      image.src = "{{url_for('static', filename='toggle.jpg')}}"
+    }
+  })
+  
+  loginBtn.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    if ((username !== null)&&(password !== null)){
+    document.querySelector("body").innerHTML="Hello world";
+    }else{
+      alert("Space should be filled")
+    }
+  })
+  </script>
+</body>
+</html>

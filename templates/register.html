@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REGISTER PAGE</title>
+  <style>
+  body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #feebe2, #ff7200);
+    background-repeat: none;
+    background-size: cover;
+  }
+  form{
+    width: 80%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #0f52ad;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px #3a71ad;
+  }
+  h1{
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+  }
+  .auth input{
+    height: 80px;
+    width: 80%;
+    background: #fff;
+    color: #000000;
+    border: 1px solid #041f7f;
+    margin: 20px;
+    text-align: center;
+    font-size: 20px;
+  }
+  .auth input::placeholder{
+    color: #000000;
+  }
+  button{
+    width: 80%;
+    height: 80px;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    border-radius: 20px;
+    margin: 30px;
+    color: #fff;
+    background: #041f7f;
+  }
+  label{
+    font-size: 15px;
+  }
+  label a{
+    font-size: 20px;
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div style="color: red; font-size: 20px; text-align: center;">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+  
+  <h1>REGISTER TO CONTINUE</h1>
+  <form class="auth" method="POST" action="/register">
+    <input type="text" name="username" placeholder="Username"required>
+    <input type="email" name="email" placeholder="Email"required>
+    <input type="password" name="password" placeholder="Password"required>
+    <button type="submit" name="Btn">Sign in</button>
+    <div class="check">
+    <label>Already have an account <a href="/login">Login</a></label>
+    </div>
+  </form>
+</body>
+</html>
